@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calendar</title>
+
+  <link rel='stylesheet' href='styles/whitespace-reset.css' />
+  <link rel="stylesheet" href="styles/calendar.css" />
+  <link href="https://fonts.googleapis.com/css?family=Galada" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <script src='scripts/jquery.js'></script>
+  <script src='scripts/handlebars.js'></script>
+  <script src='scripts/calendar.js'></script>
+</head>
+<body>
+  <main>
+    <header>
+      <nav>
+        <ul>
+          <a href="index.html">
+            <li class='home'>
+              <p>Home</p>
+            </li></a>
+          <a href="about.html">
+            <li class='about'>
+              <p>About</p>
+            </li></a>
+          <li class='search'>
+            Search
+          </li>
+        </ul>
+      </nav>
+      <h1>Calendar</h1>
+      <ul id="month_search"></ul>
+      <ul id="date_search"></ul>
+    </header>
+
+    <div id='alter'>
+      <div class='prev'>Prev</div>
+      <select id="month_dropdown"></select>
+      <div class='next'>Next</div>
+    </div>
+    <div id='calendar'></div>
+    <div id='modal'></div>
+  </main>
+
+  <script id="month_dropdown_template" type="text/x-handlebars-template">
+    <option value={{name}}>{{name}}</option>
+  </script>
+
+  <script id="month_search_template" type="text/x-handlebars-template">
+    <li data-month={{name}}><p>{{name}}</p></li>
+  </script>
+
+  <script id="date_search_template" type="text/x-handlebars-template">
+    <li class='info' data-month={{month}} data-date={{date}}><p>{{date}}</p></li>
+  </script>
+
+  <script id="date_template" type="text/x-handlebars-template">
+    {{#if date}}
+    <div data-month={{month}} data-date={{date}} class='date info'>
+      <p class="num">{{date}}</p>
+      {{#if items}}
+      <p class="items">{{items.length}}</p>
+      {{else}}
+      <p class="items">-</p>
+      {{/if}}
+      <p class='memo'>{{memo}}</p>
+    </div>
+    {{else}}
+    <div class="date"></div>
+    {{/if}}
+  </script>
+
+  <script id="todo_template" type="text/x-handlebars-template">
+    <li data-id={{todoId}}><p>{{todo}}</p><div class='material-icons delete'>delete</div></li>
+  </script>
+
+  <script id="modal_template" type="text/x-handlebars-template">
+    <button id="cancel">Cancel</button>
+    <div class='timestamp'>{{day}} {{month}} {{date}}, {{year}}</div>
+    <h3>Memo</h3>
+    <textarea class="memo_input" maxlength="50">{{memo}}</textarea>
+    <h3>Todo List</h3>
+    <ul data-month={{month}} data-date={{date}} class="info">
+      {{#each items}}
+        {{> todo_template}}
+      {{/each}}
+    </ul>
+    <h3>Add Todo</h3>
+    <input class="todo_input" type='text' maxlength="50"/>
+    <div class='add'><div class="material-icons">add_box</div></div>
+    <button class='todo_submit' type='submit'>Submit</button>  
+  </script>
+
+  <script id="months_dropdown_template" type="text/x-handlebars-template">
+    <option value='month' disabled>Month</option>
+    {{#each calendar}}
+      {{> month_dropdown_template}}
+    {{/each}}
+  </script>
+
+  <script id="months_search_template" type="text/x-handlebars-template">
+    {{#each calendar}}
+      {{> month_search_template}}
+    {{/each}}
+  </script>
+
+  <script id="dates_search_template" type="text/x-handlebars-template">
+    {{#each calendar}}
+      {{> date_search_template}}
+    {{/each}}
+  </script>
+
+  <script id="calendar_template" type="text/x-handlebars-template">
+    <div class='days'>SMTWTFS</div>
+    {{#each calendar}}
+      {{> date_template}}
+    {{/each}}
+  </script>
+</body>
+</html>

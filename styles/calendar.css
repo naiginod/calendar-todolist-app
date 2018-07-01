@@ -1,0 +1,292 @@
+body {
+  font-family: 'Galada', cursive;
+}
+
+main {
+  position: relative;
+}
+
+header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  background-color: #DADADA; 
+}
+
+header nav {
+  display: inline-block;
+  margin: 0;
+  cursor: pointer;
+}
+
+nav ul {
+  margin: 0;
+}
+
+nav a {
+  color: #000;
+}
+
+nav li {
+  display: inline-block;
+  padding: 21px 10px;
+}
+
+#month_search {
+  position: absolute;
+  top: 68px;
+  left: 20px;
+  background-color: #b876ff;
+  color: #fff;
+  cursor: pointer;
+}
+
+#month_search li,
+#date_search li {
+  display: inline-block;
+  padding: 11px 7px;
+  text-align: center;
+}
+
+#month_dropdown {
+  background-color: #DADADA;
+  border: none;
+  width: 250px;
+  font: 36px 'Galada', cursive;
+  margin-top: -2px;
+  box-sizing: border-box;
+}
+
+#month_dropdown:focus {
+  outline: none;
+}
+
+#date_search {
+  position: absolute;
+  top: 116px;
+  left: 167px;
+  background-color: #b876ff;
+  color: #fff;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 45px 45px 45px 45px 45px 45px 45px;
+  grid-template-rows: 45px 45px 45px 45px 45px;
+}
+
+.highlight {
+  background-color: #7B00FF;
+  color: #fff;
+}
+
+header h1 {
+  display: block;
+  box-sizing: border-box;
+  font-size: 36px;
+  padding: 0;
+  margin: 10px 30px 0 0; 
+}
+
+#alter {
+  background-color: #DADADA;
+  padding: 10px 10px 0 10px;
+  margin: 200px 100px 50px 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.next,
+.prev {
+  box-sizing: border-box;
+  padding: 22px 12px;
+  background-color: #b876ff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.next {
+  margin: -10px -10px 0 0 ;
+}
+
+.prev {
+  margin: -10px 0 0 -10px;
+}
+
+#calendar {
+  display: grid;
+  grid-template-rows: 75px 150px 150px 150px 150px 150px 150px;
+  grid-template-columns: 150px 150px 150px 150px 150px 150px 150px;
+  margin: 0 115px;
+}
+
+.days {
+  box-sizing: border-box;
+  grid-column-start: 1;
+  grid-column-end: 8;
+  background-color: #b876ff;
+  font-size: 44px;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 122px;
+  text-indent: 60px;
+  padding-top: 7px;
+}
+
+.date {
+  position: relative;
+  background-color: #DADADA;
+  border: 1px solid #fff;
+}
+
+.month {
+  font-size: 36px;
+}
+
+.date [type='submit'] {
+  margin: 0 0 0 90px;
+}
+
+.date:hover {
+  box-shadow: 0 0 14px rgba(0,0,0,0.7);
+  cursor: pointer;
+  z-index: 100;
+}
+
+.date:active {
+  box-shadow: 0 0 14px rgba(0,0,0,0.7);
+  cursor: pointer;
+  z-index: 100;
+}
+
+.date .num {
+  position: absolute;
+  color: #c6c6c6;
+  font-size: 60px;
+  text-align: center;
+  top: -12px;
+  left: 7px;
+}
+
+.items {
+  font-family: sans-serif;
+  font-size: 20px;
+  margin: 10px 0 0 80px;
+  color: #ff7676;
+  text-align: center;
+}
+
+.memo {
+  font-family: sans-serif;
+  margin: 40px 5px 20px 5px;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+/*  Modal */
+
+#modal {
+  position: absolute;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  top: 100px;
+  left: 100px;
+  width: 500px;
+  height: auto;
+  background-color: #DADADA;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  z-index: 100;
+  padding: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  display: none;
+}
+
+#modal h3 {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+#modal textarea {
+  width: 460px;
+  height: 28px;
+  resize: none;
+  font-size: 16px;
+  padding: 3px;
+  box-sizing: border-box;
+}
+
+#modal #cancel {
+  float: right;
+  width: 120px;
+  height: 40px;
+  font-size: 16px;
+  background-color: #b876ff;
+  color: #fff;
+  border-radius: 5px;
+  margin-top: -10px;
+}
+
+#modal li {
+  width: 460px;
+  height: 25px;
+  padding: 3px;
+  box-sizing: border-box;
+  background-color: #6e6e6e;
+  color: #fff;
+  margin: 3px 0;
+}
+
+#modal li p {
+  float: left;
+}
+#modal .delete {
+  float: right;
+  margin-top: -2px;
+}
+
+#modal [type='text'] {
+  width: 430px;
+  height: 28px;
+  font-size: 16px;
+  padding: 3px;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+#modal button {
+  float: right;
+  width: 460px;
+  height: 40px;
+  font-size: 16px;
+  background-color: #b876ff;
+  color: #fff;
+  border-radius: 5px;
+  margin: 20px 0;
+}
+
+#modal .todo_input {
+  vertical-align: middle;
+}
+
+#modal .add {
+  box-sizing: border-box;
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  vertical-align: middle;
+}
+
+
+/* <div id='modal'>
+<button id="cancel">Cancel</button>
+<h3>Memo</h3>
+<textarea maxlength="45"></textarea>
+<h3>Todo List</h3>
+<ul>
+  <li><p>Buy Groceries</p><div class='delete'>Delete</div></li>
+  <li><p>Clean Room</p><div class='delete'>Delete</div></li>
+  <li><p>Cook Dinner</p><div class='delete'>Delete</div></li>
+</ul>
+<h3>Add Todo</h3>
+<input type='text' />
+<button type='submit'>Submit</button>
+</div> */
